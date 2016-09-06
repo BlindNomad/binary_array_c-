@@ -8,16 +8,14 @@
 #ifndef FOLHATESTE_H
 #define	FOLHATESTE_H
 
-#include "BinaryTreeInterface.h"
 
-class FolhaTeste: public BinaryTreeInterface{
+class FolhaTeste{
 public:
     FolhaTeste();
     FolhaTeste(const FolhaTeste& orig);
     virtual ~FolhaTeste();
     
-
-    virtual unsigned long long int getId();
+    unsigned long long int getId();
 
     void setId(unsigned long long id);
     

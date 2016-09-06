@@ -25,7 +25,7 @@ unsigned long long int Node::GetId() const {
     return id;
 }
 
-BinaryTreeInterface* Node::GetLeaf() const {
+void* Node::GetLeaf() const {
     return leaf;
 }
 
@@ -57,7 +57,7 @@ void Node::SetId(unsigned long long int id) {
     this->id = id;
 }
 
-void Node::SetLeaf(BinaryTreeInterface* leaf) {
+void Node::SetLeaf(void* leaf) {
     this->leaf = leaf;
 }
 

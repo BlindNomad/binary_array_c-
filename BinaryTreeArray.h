@@ -9,21 +9,12 @@
 #define	BINARYTREEARRAY_H
 
 #include <list>
-
-#include "BinaryTreeInterface.h"
 #include "Node.h"
 
 
-typedef enum __size_tree {
-    __TREE_8BITS = 8,
-    __TREE_10BITS = 10,
-    __TREE_24BITS = 24,
-    __TREE_32BITS = 32,
-    __TREE_64BITS = 64,
-    __TREE_128BITS = 128,
-    __TREE_256BITS = 256
+typedef void (*valueFunc)(void *value);
 
-} __SIZE_TREE;
+typedef void (*nodeFunc)(Node *node);
 
 
 class BinaryTreeArray {
@@ -33,22 +24,35 @@ public:
     BinaryTreeArray(const BinaryTreeArray& orig);
     virtual ~BinaryTreeArray();
     
-    int Add(BinaryTreeInterface *leaf);
+    int Add(void *leaf, unsigned long long id, bool replace);
     
     void *search(long long int id);
+    
+    void forEach(valueFunc callback);
+    void free();
     
 private:
     
     Node *root;
-    
-    std::list<Node *> leafs;
     unsigned long long int treeSize;
-           
+    
+    int tmpi;
+    
     int middle(unsigned long long int begin, unsigned long long int end);
     
     Node *createNode(Node *node, unsigned long long int id, unsigned long long int level);
     Node *findNode(Node *node, unsigned long long int id);
-    void transferNode(Node *root, Node *node);
+    void transferNode(Node *node);
+    
+    //void freeNode(Node *root, Node *node);
+    
+    void nextValue(Node *node, valueFunc callback);
+    
+    void nextNode(Node *node, nodeFunc callback);
+    
+    static void deleteNode(Node *node);
+
+    void free(Node *root);
     
 };
 

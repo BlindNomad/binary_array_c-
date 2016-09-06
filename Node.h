@@ -8,9 +8,6 @@
 #ifndef NODE_H
 #define	NODE_H
 
-#include "BinaryTreeInterface.h"
-
-
 class Node {
 public:
     Node();
@@ -25,9 +22,9 @@ public:
 
     void SetId(unsigned long long int id);
 
-    BinaryTreeInterface* GetLeaf() const;
+    void* GetLeaf() const;
 
-    void SetLeaf(BinaryTreeInterface* leaf);
+    void SetLeaf(void* leaf);
 
     Node* GetLeft() const;
 
@@ -58,7 +55,7 @@ private:
     unsigned long long int id;
     unsigned long long int rageLeft;
     unsigned long long int rageRigth;
-    BinaryTreeInterface *leaf;
+    void *leaf;
 
 
 };
