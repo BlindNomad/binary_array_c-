@@ -36,7 +36,7 @@ BinaryTreeArray::~BinaryTreeArray() {
     }
 }
 
-int BinaryTreeArray::Add(void *leaf, unsigned long long id, bool replace) {
+int BinaryTreeArray::add(void *leaf, unsigned long long id, bool replace) {
 
     Node *node_tmp, *node_tmp2;
 

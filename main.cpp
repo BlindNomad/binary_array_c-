@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 
-#include "FolhaTeste.h"
+#include "Test.h"
 #include "BinaryTreeArray.h"
 
 using namespace std;
@@ -20,9 +20,9 @@ using namespace std;
  */
 
 void printValue(void *value) {
-    FolhaTeste *folha;
+    Test *folha;
 
-    folha = (FolhaTeste *) value;
+    folha = (Test *) value;
 
     printf("Folha %llu\n", folha->getId());
 
@@ -32,33 +32,33 @@ void printValue(void *value) {
 
 int main(int argc, char** argv) {
 
-    FolhaTeste *folha;
+    Test *test;
 
     unsigned long long int checkId[10000];
 
     BinaryTreeArray binaryArray;
 
-    folha = new FolhaTeste();
-    folha->setId(16);
-    binaryArray.Add(folha, 16, false);
+    test = new Test();
+    test->setId(16);
+    binaryArray.Add(test, 16, false);
 
     for (int i = 0; i < 10; i++) {
-        folha = new FolhaTeste();
-        folha->setId(rand() % 15);
-        checkId[i] = folha->getId();
-        if (!binaryArray.Add(folha, folha->getId(), false)) {
-            delete(folha);
+        test = new Test();
+        test->setId(rand() % 15);
+        checkId[i] = test->getId();
+        if (!binaryArray.Add(test, test->getId(), false)) {
+            delete(test);
         } else {
 
-            printf("Inserido %llu\n", folha->getId());
+            printf("Inserido %llu\n", test->getId());
         }
     }
 
-    FolhaTeste *folhaS;
+    Test *folhaS;
 
     for (int i = 0; i < 10; i++) {
 
-        folhaS = (FolhaTeste*) binaryArray.search(checkId[i]);
+        folhaS = (Test*) binaryArray.search(checkId[i]);
         if (folhaS == NULL) {
             printf("Erro ao buscar id: %llu\n", checkId[i]);
             exit(0);
@@ -75,7 +75,7 @@ int main(int argc, char** argv) {
         scanf("%llu", &tmpBusca);
         printf("\n");
 
-        folhaS = (FolhaTeste *) binaryArray.search(tmpBusca);
+        folhaS = (Test *) binaryArray.search(tmpBusca);
 
         if (folhaS == NULL) {
             printf("Folha nao encontrada\n");

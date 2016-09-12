@@ -16,19 +16,49 @@ typedef void (*valueFunc)(void *value);
 
 typedef void (*nodeFunc)(Node *node);
 
-
+/**
+ * It is class inserts the objects passed in a list, organized in the form of binary tree.
+ * The class contains the following methods:
+ * add -> to add new content.
+ * search -> Search a given.
+ * forEach -> Accesses all the data called the callback function to each meeting.
+ * free -> All the nodes of the tree.
+ */
 class BinaryTreeArray {
 public:   
     
+    /**
+     * Constructor
+     */
     BinaryTreeArray();
     BinaryTreeArray(const BinaryTreeArray& orig);
     virtual ~BinaryTreeArray();
     
-    int Add(void *leaf, unsigned long long id, bool replace);
+    /**
+     * Adds the dowel pointer on the informed id. Returns 1 for OK, -1 when it replaced a pointer that was already allocated and 0 in case of error.
+     * @param leaf Pointer data to be stored.
+     * @param id single given identifier.
+     * @param replace
+     * @return Returns 1 for OK, -1 when it replaced a pointer that was already allocated and 0 in case of error.
+     */
+    int add(void *leaf, unsigned long long id, bool replace);
     
+    /**
+     * Returns the pointer stored in the designated identifier.
+     * @param id Identifier.
+     * @return  Pointer stored.
+     */
     void *search(long long int id);
     
+    /**
+     * Passa por todos os nós, chamando a função de callback a cada encontro com o ponteiro armazenado.
+     * @param callback
+     */
     void forEach(valueFunc callback);
+    
+    /**
+     * Free all nodes.
+     */
     void free();
     
 private:
@@ -43,8 +73,6 @@ private:
     Node *createNode(Node *node, unsigned long long int id, unsigned long long int level);
     Node *findNode(Node *node, unsigned long long int id);
     void transferNode(Node *node);
-    
-    //void freeNode(Node *root, Node *node);
     
     void nextValue(Node *node, valueFunc callback);
     
